@@ -1,0 +1,9 @@
+.app__content {
+  padding: var(--gutter-m) var(--gutter-l);
+  box-sizing: border-box;
+}
+
+.app__header {
+  padding: var(--gutter-m) var(--gutter-l);
+  box-sizing: border-box;
+}

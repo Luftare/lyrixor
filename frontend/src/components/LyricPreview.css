@@ -1,0 +1,14 @@
+.lyric-preview__label {
+  color: var(--color-grey);
+  font-size: var(--font-s);
+  margin: var(--gutter-m) 0;
+}
+
+.lyric-preview__topic {
+  font-size: var(--font-m);
+  margin: var(--gutter-m) 0;
+}
+
+.lyric-preview__visible-rhyme {
+  font-size: var(--font-m);
+}

@@ -1,0 +1,38 @@
+:root {
+  --color-grey: #555;
+  --font-xs: 0.5em;
+  --font-s: 0.7em;
+  --font-m: 1em;
+  --font-l: 1.5em;
+  --font-xl: 2em;
+  --font-xxl: 3em;
+
+  --gutter-xs: 0.25em;
+  --gutter-s: 0.5em;
+  --gutter-m: 1em;
+  --gutter-l: 1.5em;
+  --gutter-xl: 2em;
+}
+
+body {
+  font-family: sans-serif;
+  font-size: 18px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  margin: 0;
+  padding: 0;
+  font-weight: normal;
+}
+
+h1 {
+  font-size: var(--font-xl);
+}
+
+h2 {
+  font-size: var(--font-l);
+}

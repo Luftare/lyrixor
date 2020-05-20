@@ -1,0 +1,15 @@
+.form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.form__text-input {
+  flex-grow: 1;
+}
+
+.form__submit-button {
+  margin-top: var(--gutter-m);
+  flex-grow: 0;
+  align-self: flex-start;
+}

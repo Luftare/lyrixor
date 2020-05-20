@@ -1,0 +1,71 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Lyrixor</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.11/vue.min.js"></script>
+    <script src="app.js" defer></script>
+  </head>
+  <body>
+    <div id="app">
+      <div class="top-bar" v-if="view !== 'login'">
+        <button>Aiheet</button>
+        <button>Riimit</button>
+      </div>
+      <div class="content">
+        <form @submit.prevent="login" v-if="view === 'login'" class="view">
+          <input v-model="author" placeholder="Taiteilijanimi" />
+          <button role="submit" :disabled="!validAuthor">
+            Jatka ({{author.length}} / {{ authorMaxLength }})
+          </button>
+        </form>
+
+        <div v-if="view === 'menu'">
+          <button @click="toTopicView">Kirjoita aiheita</button>
+          <button @click="toRhymeView">Kirjoita riimejä</button>
+        </div>
+
+        <div v-if="view === 'random-rhyme' && randomLyric" class="view">
+          <div>Aihe:</div>
+          <h4>{{ randomLyric.topic }}</h4>
+          <div v-if="randomLyric.rhymes.length > 0">
+            Edellinen riimi ({{randomLyric.rhymes.length }} / {{
+            randomLyric.targetLength }}):
+            <div>{{ lastRandomRhymeText }}</div>
+            <div>Jatka seuraavalla riimillä:</div>
+          </div>
+          <div v-if="randomLyric.rhymes.length === 0">
+            Kirjoita ensimmäinen riimi:
+          </div>
+
+          <form @submit.prevent="addRhyme">
+            <input type="text" v-model="newRhyme" />
+            <button role="submit" :disabled="!validRhyme">
+              Lisää ({{newRhyme.length}} / {{ rhymeMaxLength }})
+            </button>
+          </form>
+        </div>
+
+        <div v-if="view === 'new-topic'" class="view">
+          <form @submit.prevent="addTopic">
+            <input v-model="newTopic" placeholder="Aihe" />
+            <button role="submit" :disabled="!validTopic">
+              Lisää aihe ({{newTopic.length}} / {{ topicMaxLength }})
+            </button>
+          </form>
+        </div>
+
+        <div v-if="view === 'finished-lyrics'" class="view">
+          <h5>Valmiit lyriikat</h5>
+          <div v-for="lyric in lyrics">
+            <p>{{ lyric.topic }}</p>
+            <div v-for="rhyme in lyric.rhymes">
+              {{ rhyme.rhyme }} ({{ rhyme.author }})
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
