@@ -17,7 +17,7 @@ const LyricsList: FunctionComponent = () => {
     fetchLyrics();
   }, []);
 
-  return (
+  const lyricsList = () => (
     <>
       <label>
         <input
@@ -36,6 +36,10 @@ const LyricsList: FunctionComponent = () => {
       ))}
     </>
   );
+
+  const noLyricsInfo = () => <h2>Ei vielä yhtään valmista tuotosta...</h2>;
+
+  return lyrics.length > 0 ? lyricsList() : noLyricsInfo();
 };
 
 export default LyricsList;
