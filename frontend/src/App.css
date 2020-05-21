@@ -6,4 +6,10 @@
 .app__header {
   padding: var(--gutter-m) var(--gutter-l);
   box-sizing: border-box;
+  border-bottom: solid var(--color-lightgrey) 2px;
+}
+
+.app__header > * {
+  font-size: var(--font-s);
+  margin-right: var(--gutter-m);
 }

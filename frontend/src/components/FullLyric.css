@@ -1,0 +1,39 @@
+.lyric {
+  margin-top: var(--gutter-m);
+}
+
+.lyric__author {
+  opacity: 1;
+  font-size: var(--font-s);
+  margin-left: var(--gutter-s);
+  color: var(--color-darkgrey);
+  font-weight: lighter;
+  transition: opacity 300ms;
+}
+
+.lyric__author--hidden {
+  opacity: 0;
+}
+
+.lyric__topic {
+  margin-bottom: var(--gutter-m);
+  margin-top: var(--gutter-l);
+  font-weight: bold;
+}
+
+.lyric__rhyme {
+  margin-top: var(--gutter-xs);
+}
+
+.lyric__rhyme-author {
+  opacity: 1;
+  margin-left: var(--gutter-m);
+  color: var(--color-darkgrey);
+  font-weight: lighter;
+  font-size: var(--font-s);
+  transition: opacity 300ms;
+}
+
+.lyric__rhyme-author--hidden {
+  opacity: 0;
+}

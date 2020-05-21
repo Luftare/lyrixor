@@ -3,11 +3,12 @@ import './Form.css';
 
 export interface FormProps {
   onSubmit: (value: string) => void;
+  validator?: (value: string) => boolean;
   buttonText: string;
   initValue?: string;
   maxLength?: number;
   placeholder?: string;
-  resetOnSubmit: boolean;
+  resetOnSubmit?: boolean;
 }
 
 const Form: FunctionComponent<FormProps> = ({
@@ -18,11 +19,13 @@ const Form: FunctionComponent<FormProps> = ({
   minLength = 0,
   placeholder = '',
   resetOnSubmit = false,
+  validator = (value) => true,
   ...rest
 }) => {
   const [value, setValue] = useState(initValue);
 
-  const validInput = value.length >= minLength && value.length <= maxLength;
+  const validInput =
+    value.length >= minLength && value.length <= maxLength && validator(value);
 
   const handleSubmit = (e) => {
     e.preventDefault();

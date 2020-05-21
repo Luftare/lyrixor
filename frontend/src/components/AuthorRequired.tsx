@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from 'react';
+import { FunctionComponent } from 'react';
 import { useStore } from 'react-hookstore';
 import { useHistory } from 'react-router';
 import { Stores } from '../store';

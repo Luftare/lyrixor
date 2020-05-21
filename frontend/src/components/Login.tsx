@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useHistory } from 'react-router';
 import { useStore } from 'react-hookstore';
 import { Stores } from '../store';
@@ -13,18 +13,24 @@ export default (props) => {
     setAuthorName(value);
     localStorage.setItem(Stores.AuthorName, value);
 
-    history.push('/');
+    history.push('/option-list');
   };
 
   return (
     <div className="login">
-      <h2>Taiteilijanimi</h2>
+      <h1>Räpystin</h1>
+      <p>
+        Tervetuloa räpin rustaajien jamittelupaikkaan! Voit keksiä räppien
+        aiheita tai riimejä valmiisiin aiheisiin.
+      </p>
+      <p>Valmiita lyriikoita voi vapaasti käyttää vaikka omissa kappaleissa.</p>
       <Form
         buttonText="Jatka"
+        placeholder="Taiteilijanimi"
         onSubmit={handleSubmit}
         initValue={authorName}
         minLength={1}
-        maxLength={16}
+        maxLength={28}
         {...props}
       />
     </div>

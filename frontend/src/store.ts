@@ -4,6 +4,7 @@ import { Lyric } from './interfaces/models';
 export enum Stores {
   AuthorName = 'authorName',
   Lyrics = 'lyrics',
+  ToasterMessage = 'toasterMessage',
 }
 
 export const initStore = () => {

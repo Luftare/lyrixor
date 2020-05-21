@@ -1,5 +1,9 @@
 :root {
-  --color-grey: #555;
+  --color-lightgrey: #eee;
+  --color-grey: #999;
+  --color-darkgrey: #777;
+  --color-green: #5e4;
+  --color-blue: #57e;
   --font-xs: 0.5em;
   --font-s: 0.7em;
   --font-m: 1em;
@@ -17,6 +21,8 @@
 body {
   font-family: sans-serif;
   font-size: 18px;
+  margin: 0;
+  padding: 0;
 }
 
 h1,
@@ -35,4 +41,30 @@ h1 {
 
 h2 {
   font-size: var(--font-l);
+}
+
+button {
+  padding: 8px;
+  box-sizing: border-box;
+  border: none;
+  background: var(--color-green);
+  font-size: 16px;
+}
+
+.label {
+  color: var(--color-grey);
+  font-size: var(--font-s);
+  margin: var(--gutter-m) 0;
+}
+
+label {
+  color: var(--color-darkgrey);
+}
+
+input[type='checkbox'] {
+  margin-right: var(--gutter-m);
+}
+
+p {
+  font-weight: lighter;
 }

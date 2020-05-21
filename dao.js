@@ -37,7 +37,22 @@ class DAO {
       rhymes: [...lyric.rhymes, { rhyme, author }],
     };
 
-    this.lyrics.replaceOne({ _id: new ObjectId(id) }, updatedLyric);
+    return this.lyrics.replaceOne({ _id: new ObjectId(id) }, updatedLyric);
+  }
+
+  removeLyric(id) {
+    return this.lyrics.deleteOne({ _id: new ObjectId(id) });
+  }
+
+  async removeRhyme(id, index) {
+    const lyric = await this.lyrics.findOne({ _id: new ObjectId(id) });
+
+    const updatedLyric = {
+      ...lyric,
+      rhymes: lyric.rhymes.filter((_, i) => i < index),
+    };
+
+    return this.lyrics.replaceOne({ _id: new ObjectId(id) }, updatedLyric);
   }
 
   getAllLyrics() {

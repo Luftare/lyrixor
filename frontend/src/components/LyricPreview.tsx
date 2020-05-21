@@ -11,21 +11,21 @@ const LyricPreview: FunctionComponent<LyricPreviewProps> = ({ lyric }) => {
 
   const exisintRhymePreview = () => (
     <>
-      <div className="lyric-preview__label">
+      <div className="label">
         Edellinen riimi ({lyric.rhymes.length} / {lyric.targetLength}):
       </div>
       <div className="lyric-preview__visible-rhyme">{visibleRhyme.rhyme}</div>
-      <div className="lyric-preview__label">Kirjoita seuraava riimi:</div>
+      <div className="label">Kirjoita seuraava riimi:</div>
     </>
   );
 
   const firstRhymeGuide = () => (
-    <div className="lyric-preview__no-rhymes">Kirjoita ensimmäinen riimi!</div>
+    <div className="label">Ei aiempia riimejä, keksi ensimmäinen:</div>
   );
 
   return (
     <div className="lyric-preview">
-      <div className="lyric-preview__label">Aihe:</div>
+      <div className="label">Aihe:</div>
       <div className="lyric-preview__topic">{lyric.topic}</div>
       {visibleRhyme ? exisintRhymePreview() : firstRhymeGuide()}
     </div>

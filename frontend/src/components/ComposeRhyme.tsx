@@ -7,13 +7,17 @@ import Form from './Form';
 import { Rhyme } from '../interfaces/models';
 import LyricPreview from './LyricPreview';
 
+import './ComposeRhyme.css';
+
 const ComposeRhyme: FunctionComponent = () => {
   const [randomLyric, setRandomLyric] = useState<Rhyme>(null);
   const [author] = useStore(Stores.AuthorName);
   const history = useHistory();
 
   const fetchRandomLyric = async () => {
-    setRandomLyric(await api.get('/lyrics/random'));
+    try {
+      setRandomLyric(await api.get('/lyrics/random'));
+    } catch (err) {}
   };
 
   useEffect(() => {
@@ -26,19 +30,38 @@ const ComposeRhyme: FunctionComponent = () => {
       author,
       currentRhymesCount: randomLyric.rhymes.length,
     });
+    fetchRandomLyric();
   };
 
-  return (
+  const rhymeInput = () => (
     <>
       {randomLyric && <LyricPreview lyric={randomLyric} />}
       <Form
         onSubmit={handleSubmit}
         buttonText="Lähetä"
         placeholder="Riimi"
+        minLength={1}
+        maxLength={64}
+        validator={(value) =>
+          value.split(' ').filter((v) => v.length > 0).length > 1
+        }
         resetOnSubmit
       />
     </>
   );
+
+  const noRhymesInfo = () => (
+    <>
+      <span className="compose-rhyme__no-lyrics-text">
+        Ei keskeneräisiä aiheita...
+      </span>
+      <button onClick={() => history.push('/compose-topics')}>
+        Keksi uusia aiheita
+      </button>
+    </>
+  );
+
+  return <div>{randomLyric ? rhymeInput() : noRhymesInfo()}</div>;
 };
 
 export default ComposeRhyme;

@@ -34,7 +34,7 @@ api.get('/lyrics', async (req, res) => {
 });
 
 api.post('/lyrics', async (req, res) => {
-  const { topic, rhyme, author } = req.body;
+  const { topic, author } = req.body;
 
   if (topic && author) {
     await dao.createNewLyrics(author, topic);
@@ -59,6 +59,28 @@ api.post('/lyrics/:id/rhyme', async (req, res) => {
       res.sendStatus(403);
     }
   } else {
+    res.sendStatus(400);
+  }
+});
+
+api.delete('/lyrics/:id/rhyme/:index', async (req, res) => {
+  const { id } = req.params;
+
+  try {
+    await dao.removeRhyme(id, parseInt(index));
+    res.sendStatus(200);
+  } catch (err) {
+    res.sendStatus(400);
+  }
+});
+
+api.delete('/lyrics/:id', async (req, res) => {
+  const { id } = req.params;
+
+  try {
+    await dao.removeLyric(id);
+    res.sendStatus(200);
+  } catch (err) {
     res.sendStatus(400);
   }
 });
