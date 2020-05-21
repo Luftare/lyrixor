@@ -23,9 +23,9 @@ export default () => {
         <Link to="/">Alku</Link>
         {authorName && (
           <>
-            <Link to="/compose-topics">Keksi aiheet</Link>
-            <Link to="/compose-rhymes">Keksi riimi</Link>
-            <Link to="/lyrics">Valmiit sanat</Link>
+            <Link to="/compose-topics">Aiheet</Link>
+            <Link to="/compose-rhymes">Riimi</Link>
+            <Link to="/lyrics">Tuotokset</Link>
           </>
         )}
       </div>
