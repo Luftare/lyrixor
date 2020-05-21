@@ -52,6 +52,17 @@ export default () => {
         <Route path="/option-list" component={OptionList} />
         <Route path="/" exact component={Login} />
       </div>
+      <Link
+        to="/admin"
+        style={{
+          position: 'absolute',
+          top: '0px',
+          right: '0px',
+          color: 'white',
+        }}
+      >
+        A
+      </Link>
     </Router>
   );
 };
