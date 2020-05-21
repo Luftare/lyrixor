@@ -6,6 +6,7 @@ export interface FormProps {
   validator?: (value: string) => boolean;
   buttonText: string;
   initValue?: string;
+  minLength?: number;
   maxLength?: number;
   placeholder?: string;
   resetOnSubmit?: boolean;

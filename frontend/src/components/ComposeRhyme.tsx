@@ -4,13 +4,13 @@ import { useStore } from 'react-hookstore';
 import { Stores } from '../store';
 import api from '../utils/api';
 import Form from './Form';
-import { Rhyme } from '../interfaces/models';
+import { Lyric } from '../interfaces/models';
 import LyricPreview from './LyricPreview';
 
 import './ComposeRhyme.css';
 
-const ComposeRhyme: FunctionComponent = () => {
-  const [randomLyric, setRandomLyric] = useState<Rhyme>(null);
+const ComposeRhyme = <P extends object>() => {
+  const [randomLyric, setRandomLyric] = useState<Lyric | null>(null);
   const [author] = useStore(Stores.AuthorName);
   const history = useHistory();
 
@@ -25,10 +25,10 @@ const ComposeRhyme: FunctionComponent = () => {
   }, []);
 
   const handleSubmit = async (rhyme) => {
-    await api.post(`/lyrics/${randomLyric._id}/rhyme`, {
+    await api.post(`/lyrics/${randomLyric?._id}/rhyme`, {
       rhyme,
       author,
-      currentRhymesCount: randomLyric.rhymes.length,
+      currentRhymesCount: randomLyric?.rhymes.length,
     });
     fetchRandomLyric();
   };

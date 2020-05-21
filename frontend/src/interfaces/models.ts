@@ -8,4 +8,5 @@ export interface Lyric {
   author: string;
   topic: string;
   rhymes: Rhyme[];
+  _id: number | string;
 }

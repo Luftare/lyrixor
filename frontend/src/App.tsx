@@ -32,17 +32,17 @@ export default () => {
       <div className="app__content">
         <Route
           path="/compose-rhymes"
-          render={(props) => (
+          render={() => (
             <AuthorRequired redirect="/">
-              <ComposeRhyme {...props} />
+              <ComposeRhyme />
             </AuthorRequired>
           )}
         />
         <Route
           path="/compose-topics"
-          render={(props) => (
+          render={() => (
             <AuthorRequired redirect="/">
-              <ComposeTopics {...props} />
+              <ComposeTopics />
             </AuthorRequired>
           )}
         />
