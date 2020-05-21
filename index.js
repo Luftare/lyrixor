@@ -63,8 +63,12 @@ api.post('/lyrics/:id/rhyme', async (req, res) => {
   }
 });
 
-api.delete('/lyrics/:id/rhyme/:index', async (req, res) => {
-  const { id } = req.params;
+// Don't do this, really
+api.delete('/lyrics/:id/rhymes/:index/:password', async (req, res) => {
+  const { id, password, index } = req.params;
+  if (password !== process.env.ADMIN_PASSWORD) {
+    return res.sendStatus(403);
+  }
 
   try {
     await dao.removeRhyme(id, parseInt(index));
@@ -74,8 +78,12 @@ api.delete('/lyrics/:id/rhyme/:index', async (req, res) => {
   }
 });
 
-api.delete('/lyrics/:id', async (req, res) => {
-  const { id } = req.params;
+// Don't do this, really
+api.delete('/lyrics/:id/:password', async (req, res) => {
+  const { id, password } = req.params;
+  if (password !== process.env.ADMIN_PASSWORD) {
+    return res.sendStatus(403);
+  }
 
   try {
     await dao.removeLyric(id);

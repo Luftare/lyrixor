@@ -7,6 +7,7 @@ import api from './utils/api';
 
 import AuthorRequired from './components/AuthorRequired';
 import Login from './components/Login';
+import Admin from './components/Admin';
 import ComposeRhyme from './components/ComposeRhyme';
 import ComposeTopics from './components/ComposeTopics';
 import LyricsList from './components/LyricsList';
@@ -47,6 +48,7 @@ export default () => {
           )}
         />
         <Route path="/lyrics" component={LyricsList} />
+        <Route path="/admin" component={Admin} />
         <Route path="/option-list" component={OptionList} />
         <Route path="/" exact component={Login} />
       </div>

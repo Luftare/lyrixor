@@ -14,4 +14,9 @@ export default {
       },
     });
   },
+  delete(url: string) {
+    return fetch(`${endpointUrl}${url}`, {
+      method: 'DELETE',
+    });
+  },
 };
