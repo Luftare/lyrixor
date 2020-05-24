@@ -1,6 +1,7 @@
 require('dotenv').config();
 
 const express = require('express');
+const path = require('path');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 
@@ -94,12 +95,17 @@ api.delete('/lyrics/:id/:password', async (req, res) => {
 });
 
 api.get('/lyrics/random', async (req, res) => {
+  const { id } = req.query;
   try {
-    res.json(await dao.getRandomUnfinishedLyric());
+    res.json(await dao.getRandomUnfinishedLyric(id));
   } catch (err) {
     res.sendStatus(400);
   }
 });
+
+app.get('*', (req, res) =>
+  res.sendFile(path.resolve('./frontend', 'build', 'index.html'))
+);
 
 (async () => {
   await dao.connect();

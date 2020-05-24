@@ -54,6 +54,10 @@ button {
   font-size: 16px;
 }
 
+.button__secondary {
+  background: var(--color-blue);
+}
+
 .label {
   color: var(--color-grey);
   font-size: var(--font-s);

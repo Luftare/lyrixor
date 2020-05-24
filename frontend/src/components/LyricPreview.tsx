@@ -7,15 +7,32 @@ export interface LyricPreviewProps {
 }
 
 const LyricPreview: FunctionComponent<LyricPreviewProps> = ({ lyric }) => {
-  const visibleRhyme = lyric.rhymes[lyric.rhymes.length - 1];
+  const maxVisibleCount = 4;
+  const visibleRhymes = lyric.rhymes.filter(
+    (_, index) => index >= lyric.rhymes.length - maxVisibleCount
+  );
+
+  const rhymeOpacity = (index: number) => index / visibleRhymes.length + 0.2;
 
   const exisintRhymePreview = () => (
     <>
-      <div className="label">
-        Edellinen riimi ({lyric.rhymes.length} / {lyric.targetLength}):
+      <div className="label">Edelliset riimit:</div>
+      <div className="lyric-preview__visible-rhymes">
+        {visibleRhymes.map((rhyme, i) => (
+          <div
+            className="lyric-preview__visible-rhyme"
+            key={Math.random()}
+            style={{ opacity: rhymeOpacity(i) }}
+          >
+            {rhyme.rhyme}
+          </div>
+        ))}
       </div>
-      <div className="lyric-preview__visible-rhyme">{visibleRhyme.rhyme}</div>
-      <div className="label">Kirjoita seuraava riimi:</div>
+
+      <div className="label">
+        Kirjoita seuraava riimi ({lyric.rhymes.length + 1} /{' '}
+        {lyric.targetLength}):
+      </div>
     </>
   );
 
@@ -27,7 +44,7 @@ const LyricPreview: FunctionComponent<LyricPreviewProps> = ({ lyric }) => {
     <div className="lyric-preview">
       <div className="label">Aihe:</div>
       <div className="lyric-preview__topic">{lyric.topic}</div>
-      {visibleRhyme ? exisintRhymePreview() : firstRhymeGuide()}
+      {visibleRhymes.length ? exisintRhymePreview() : firstRhymeGuide()}
     </div>
   );
 };

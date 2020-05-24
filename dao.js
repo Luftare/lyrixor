@@ -19,8 +19,10 @@ class DAO {
     this.lyrics = this.db.collection(process.env.LYRICS_COLLECTION);
   }
 
-  async getRandomUnfinishedLyric() {
-    const lyrics = await this.getUnfinishedLyrics();
+  async getRandomUnfinishedLyric(excludedId) {
+    const lyrics = (await this.getUnfinishedLyrics()).filter(
+      ({ _id }) => _id + '' !== excludedId
+    );
     const index = Math.floor(Math.random() * lyrics.length);
     return lyrics[index];
   }

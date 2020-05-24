@@ -16,7 +16,8 @@ const ComposeRhyme = <P extends object>() => {
 
   const fetchRandomLyric = async () => {
     try {
-      setRandomLyric(await api.get('/lyrics/random'));
+      const currentId = randomLyric && randomLyric._id;
+      setRandomLyric(await api.get(`/lyrics/random?id=${currentId}`));
     } catch (err) {}
   };
 
@@ -35,7 +36,18 @@ const ComposeRhyme = <P extends object>() => {
 
   const rhymeInput = () => (
     <>
-      {randomLyric && <LyricPreview lyric={randomLyric} />}
+      {randomLyric && (
+        <>
+          <button
+            className="button button__secondary"
+            onClick={fetchRandomLyric}
+            style={{ marginTop: '8px' }}
+          >
+            Toinen aihe
+          </button>
+          <LyricPreview lyric={randomLyric} />{' '}
+        </>
+      )}
       <Form
         onSubmit={handleSubmit}
         buttonText="Lähetä"

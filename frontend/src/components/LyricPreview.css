@@ -6,7 +6,12 @@
 }
 
 .lyric-preview__visible-rhyme {
-  text-align: center;
   font-size: var(--font-m);
   font-weight: lighter;
+}
+
+.lyric-preview__visible-rhymes {
+  margin-left: var(--gutter-m);
+  display: grid;
+  grid-gap: var(--gutter-s);
 }
