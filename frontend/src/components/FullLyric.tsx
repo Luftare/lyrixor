@@ -20,16 +20,17 @@ const FullLyric: FunctionComponent<FullLyricProps> = ({
         by: {lyric.author}
       </span>
     </h3>
-    {lyric.rhymes.map(({ rhyme, author }) => (
-      <div key={Math.random()} className="lyric__rhyme">
+    {lyric.rhymes.map(({ rhyme, author }, index) => (
+      <div
+        key={Math.random()}
+        className={`lyric__rhyme ${
+          index % 4 === 0 && 'lyric__rhyme--section-start'
+        }`}
+      >
         {rhyme}
-        <span
-          className={`lyric__rhyme-author ${
-            !showAuthors && 'lyric__rhyme-author--hidden'
-          }`}
-        >
-          by: {author}
-        </span>
+        {showAuthors && (
+          <span className="lyric__rhyme-author">by: {author}</span>
+        )}
       </div>
     ))}
   </div>

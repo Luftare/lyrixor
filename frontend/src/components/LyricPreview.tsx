@@ -12,7 +12,8 @@ const LyricPreview: FunctionComponent<LyricPreviewProps> = ({ lyric }) => {
     (_, index) => index >= lyric.rhymes.length - maxVisibleCount
   );
 
-  const rhymeOpacity = (index: number) => index / visibleRhymes.length + 0.2;
+  const rhymeOpacity = (index: number) =>
+    visibleRhymes.length === 1 ? 1 : (index / visibleRhymes.length) * 0.7 + 0.3;
 
   const exisintRhymePreview = () => (
     <>

@@ -25,6 +25,10 @@
   margin-top: var(--gutter-xs);
 }
 
+.lyric__rhyme--section-start {
+  margin-top: var(--gutter-l);
+}
+
 .lyric__rhyme-author {
   opacity: 1;
   margin-left: var(--gutter-m);

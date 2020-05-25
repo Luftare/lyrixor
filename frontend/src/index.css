@@ -55,7 +55,10 @@ button {
 }
 
 .button__secondary {
-  background: var(--color-blue);
+  background: none;
+  padding: 0;
+  text-decoration: underline;
+  color: var(--color-blue);
 }
 
 .label {

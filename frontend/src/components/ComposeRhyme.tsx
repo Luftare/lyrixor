@@ -45,7 +45,7 @@ const ComposeRhyme = <P extends object>() => {
           >
             Toinen aihe
           </button>
-          <LyricPreview lyric={randomLyric} />{' '}
+          <LyricPreview lyric={randomLyric} />
         </>
       )}
       <Form
